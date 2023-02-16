@@ -1,0 +1,12 @@
+.item__like {
+  width: 22px;
+  height: 19px;
+  fill: none;
+  align-self: center;
+  transition: opacity 0.2s linear;
+}
+
+.item__like:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

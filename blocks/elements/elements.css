@@ -1,0 +1,11 @@
+.elements {
+  margin-top: 50px;
+  margin-bottom: 66px;
+}
+
+@media screen and (max-width: 638px) {
+  .elements {
+    margin-top: 36px;
+    margin-bottom: 48px;
+  }
+}

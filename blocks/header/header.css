@@ -1,0 +1,15 @@
+.header {
+  margin: 45px auto 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 41px;
+  font-size: 0;
+}
+
+@media screen and (max-width: 638px) {
+  .header {
+    margin: 28px auto 42px;
+    row-gap: 31.6px;
+  }
+}

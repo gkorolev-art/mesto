@@ -1,0 +1,7 @@
+.item__like_active {
+  width: 22px;
+  height: 19px;
+  align-self: center;
+  fill: #000;
+  cursor: pointer;
+}

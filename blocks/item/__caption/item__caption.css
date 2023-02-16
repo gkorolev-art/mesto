@@ -1,0 +1,6 @@
+.item__caption {
+  margin: 25px 21px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

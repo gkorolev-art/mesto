@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Проектная работа Mesto" />
+    <meta name="keywords" content="html, css, js, Yandex.Praktikum" />
+    <meta name="author" content="Gregory Carroll" />
+    <title lang="en">Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+    <script src="./scripts/index.js" defer></script>
+  </head>
+  <body class="page">
+    <header class="header">
+      <a class="header__link" href="#">
+        <img
+          class="header__logo"
+          src="./images/logo_Mesto.svg"
+          alt="Логотип Mesto"
+        />
+      </a>
+      <div class="header__line"></div>
+    </header>
+    <main aria-label="Сервис Mesto">
+      <section class="profile">
+        <div class="profile__avatar">
+          <img src="./images/profile/avatar.png" alt="аватар" />
+        </div>
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button hover" type="button">
+            <span class="sr-only">Редактировать профиль</span>
+          </button>
+          <p class="profile__occupation"></p>
+        </div>
+        <button class="profile__add-button hover" type="button">
+          <span class="sr-only">Добавить пост</span>
+        </button>
+      </section>
+      <section class="elements">
+        <ul class="elements__list">
+          <li class="item">
+            <img
+              class="item__picture"
+              src="./images/elements/karachaevsk.png"
+              alt="Карачаевск"
+            />
+            <div class="item__caption">
+              <h2 class="item__heading">Карачаевск</h2>
+              <svg class="item__like">
+                <path
+                  fill="#000"
+                  d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
+                />
+                <path
+                  d="M20.3 1.682c2.267 2.22 2.267 5.861 0 8.104L10.98 19 1.684 9.808A5.75 5.75 0 0 1 0 5.745C0 4.213.584 2.77 1.684 1.682 3.93-.561 7.612-.561 9.88 1.704l1.1 1.088 1.1-1.11c2.269-2.243 5.951-2.243 8.22 0Z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li class="item">
+            <img
+              class="item__picture"
+              src="./images/elements/elbrus.png"
+              alt="Эльбрус"
+            />
+            <div class="item__caption">
+              <h2 class="item__heading">Гора Эльбрус</h2>
+              <svg
+                class="item__like item__like_active"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill="#000"
+                  d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
+                />
+                <path
+                  d="M20.3 1.682c2.267 2.22 2.267 5.861 0 8.104L10.98 19 1.684 9.808A5.75 5.75 0 0 1 0 5.745C0 4.213.584 2.77 1.684 1.682 3.93-.561 7.612-.561 9.88 1.704l1.1 1.088 1.1-1.11c2.269-2.243 5.951-2.243 8.22 0Z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li class="item">
+            <img
+              class="item__picture"
+              src="./images/elements/dombai.png"
+              alt="Домбай"
+            />
+            <div class="item__caption">
+              <h2 class="item__heading">Домбай</h2>
+              <svg class="item__like" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#000"
+                  d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
+                />
+                <path
+                  d="M20.3 1.682c2.267 2.22 2.267 5.861 0 8.104L10.98 19 1.684 9.808A5.75 5.75 0 0 1 0 5.745C0 4.213.584 2.77 1.684 1.682 3.93-.561 7.612-.561 9.88 1.704l1.1 1.088 1.1-1.11c2.269-2.243 5.951-2.243 8.22 0Z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li class="item">
+            <img
+              class="item__picture"
+              src="./images/elements/elbrus.png"
+              alt="Эльбрус"
+            />
+            <div class="item__caption">
+              <h2 class="item__heading">Гора Эльбрус</h2>
+              <svg class="item__like" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#000"
+                  d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
+                />
+                <path
+                  d="M20.3 1.682c2.267 2.22 2.267 5.861 0 8.104L10.98 19 1.684 9.808A5.75 5.75 0 0 1 0 5.745C0 4.213.584 2.77 1.684 1.682 3.93-.561 7.612-.561 9.88 1.704l1.1 1.088 1.1-1.11c2.269-2.243 5.951-2.243 8.22 0Z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li class="item">
+            <img
+              class="item__picture"
+              src="./images/elements/dombai.png"
+              alt="Домбай"
+            />
+            <div class="item__caption">
+              <h2 class="item__heading">Домбай</h2>
+              <svg class="item__like" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#000"
+                  d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
+                />
+                <path
+                  d="M20.3 1.682c2.267 2.22 2.267 5.861 0 8.104L10.98 19 1.684 9.808A5.75 5.75 0 0 1 0 5.745C0 4.213.584 2.77 1.684 1.682 3.93-.561 7.612-.561 9.88 1.704l1.1 1.088 1.1-1.11c2.269-2.243 5.951-2.243 8.22 0Z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li class="item">
+            <img
+              class="item__picture"
+              src="./images/elements/karachaevsk.png"
+              alt="Карачаево-Черкесия"
+            />
+            <div class="item__caption">
+              <h2 class="item__heading">Карачаево-Черкесия</h2>
+              <svg class="item__like" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#000"
+                  d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
+                />
+                <path
+                  d="M20.3 1.682c2.267 2.22 2.267 5.861 0 8.104L10.98 19 1.684 9.808A5.75 5.75 0 0 1 0 5.745C0 4.213.584 2.77 1.684 1.682 3.93-.561 7.612-.561 9.88 1.704l1.1 1.088 1.1-1.11c2.269-2.243 5.951-2.243 8.22 0Z"
+                />
+              </svg>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__text" lang="en">&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <div class="popup">
+      <form class="popup__container" action="#" method="get">
+        <p class="popup__heading">Редактировать профиль</p>
+        <input
+          class="popup__input"
+          type="text"
+          name="name"
+          id="user-name-input"
+          placeholder="Имя"
+          value=""
+          required
+        />
+        <input
+          class="popup__input"
+          type="text"
+          name="occupation"
+          id="user-occupation-input"
+          placeholder="Профессия"
+          value=""
+          required
+        />
+        <button class="popup__button-save">Сохранить</button>
+      </form>
+      <button type="button" class="popup__close hover">
+        <span class="sr-only">Закрыть</span>
+      </button>
+    </div>
+  </body>
+</html>
