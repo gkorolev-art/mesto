@@ -5,6 +5,9 @@
   fill: none;
   align-self: center;
   transition: opacity 0.2s linear;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
 }
 
 .item__like:hover {

@@ -19,19 +19,20 @@
           alt="Логотип Mesto"
         />
       </a>
-      <div class="header__line"></div>
     </header>
     <main aria-label="Сервис Mesto">
       <section class="profile">
-        <div class="profile__avatar">
-          <img src="./images/profile/avatar.png" alt="аватар" />
-        </div>
+        <img
+          class="profile__avatar"
+          src="./images/profile/avatar.png"
+          alt="аватар"
+        />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button hover" type="button">
             <span class="sr-only">Редактировать профиль</span>
           </button>
-          <p class="profile__occupation"></p>
+          <p class="profile__occupation">Исследователь океана</p>
         </div>
         <button class="profile__add-button hover" type="button">
           <span class="sr-only">Добавить пост</span>
@@ -47,7 +48,7 @@
             />
             <div class="item__caption">
               <h2 class="item__heading">Карачаевск</h2>
-              <div class="item__like"></div>
+              <button class="item__like" type="button"></button>
             </div>
           </li>
           <li class="item">
@@ -58,7 +59,10 @@
             />
             <div class="item__caption">
               <h2 class="item__heading">Гора Эльбрус</h2>
-              <div class="item__like item__like_active"></div>
+              <button
+                class="item__like item__like_active"
+                type="button"
+              ></button>
             </div>
           </li>
           <li class="item">
@@ -69,7 +73,7 @@
             />
             <div class="item__caption">
               <h2 class="item__heading">Домбай</h2>
-              <div class="item__like"></div>
+              <button class="item__like" type="button"></button>
             </div>
           </li>
           <li class="item">
@@ -80,7 +84,7 @@
             />
             <div class="item__caption">
               <h2 class="item__heading">Гора Эльбрус</h2>
-              <div class="item__like"></div>
+              <button class="item__like" type="button"></button>
             </div>
           </li>
           <li class="item">
@@ -91,7 +95,7 @@
             />
             <div class="item__caption">
               <h2 class="item__heading">Домбай</h2>
-              <div class="item__like"></div>
+              <button class="item__like" type="button"></button>
             </div>
           </li>
           <li class="item">
@@ -102,7 +106,7 @@
             />
             <div class="item__caption">
               <h2 class="item__heading">Карачаево-Черкесия</h2>
-              <div class="item__like"></div>
+              <button class="item__like" type="button"></button>
             </div>
           </li>
         </ul>
@@ -113,31 +117,33 @@
     </footer>
 
     <div class="popup">
-      <form class="popup__container" action="#" method="get">
-        <p class="popup__heading">Редактировать профиль</p>
-        <input
-          class="popup__input"
-          type="text"
-          name="name"
-          id="user-name-input"
-          placeholder="Имя"
-          value=""
-          required
-        />
-        <input
-          class="popup__input"
-          type="text"
-          name="occupation"
-          id="user-occupation-input"
-          placeholder="Профессия"
-          value=""
-          required
-        />
-        <button class="popup__button-save">Сохранить</button>
-      </form>
-      <button type="button" class="popup__close hover">
-        <span class="sr-only">Закрыть</span>
-      </button>
+      <div class="popup__container">
+        <button type="button" class="popup__close hover">
+          <span class="sr-only">Закрыть</span>
+        </button>
+        <form name="edit-profile">
+          <h3 class="popup__heading">Редактировать профиль</h3>
+          <input
+            class="popup__input"
+            type="text"
+            name="name"
+            id="user-name-input"
+            placeholder="Имя"
+            value=""
+            required
+          />
+          <input
+            class="popup__input"
+            type="text"
+            name="occupation"
+            id="user-occupation-input"
+            placeholder="Профессия"
+            value=""
+            required
+          />
+          <button class="popup__button-save" type="submit">Сохранить</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

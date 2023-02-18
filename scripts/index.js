@@ -1,71 +1,53 @@
 //Создаем константу для кнопки редактирования профиля
 const editProfileButton = document.querySelector(".profile__edit-button");
-if (!editProfileButton) {
-  throw new Error("No editProfileButton");
-}
 
 //Создаем константу для попапа
 const editPopup = document.querySelector(".popup");
-if (!editPopup) {
-  throw new Error("No editPopup");
-}
+
+//Создаём константу для кнопки закрытия попапа
+const editProfileCloseButton = document.querySelector(".popup__close");
+
+//Создаём константы для имени и профессии в блоке профиль
+const userNameElement = document.querySelector(".profile__name");
+const userOccupationElement = document.querySelector(".profile__occupation");
+
+//Создаём константы для формы
+const formEditProfile = document.querySelector(".popup__container");
+const userNameInput = document.querySelector("#user-name-input");
+const userOccupationInput = document.querySelector("#user-occupation-input");
+const saveButton = document.querySelector(".popup__button-save");
 
 //Создаём слушатель события на кнопку открытия попапа по клику
 editProfileButton.addEventListener("click", function () {
   openPopup(editPopup);
 });
 
-//Создаём константу для кнопки закрытия попапа
-const editProfileCloseButton = document.querySelector(".popup__close");
-if (!editProfileCloseButton) {
-  throw new Error("No closeEditProfileButton");
-}
-
-//Создаём слушатель события на кнопку закрытия попапа по клику
+//Создаём слушатель события на кнопку закрытия попапа по клику на крестик
 editProfileCloseButton.addEventListener("click", function () {
   closePopup(editPopup);
 });
 
-//Создаем функцию, которая добавляет класс с правилом flex
+//Создаем функцию, которая добавляет класс с правилом flex, открывает попап
+//и отображает в форме текущие значения имени и профессии
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  userNameInput.value = userNameElement.textContent;
+  userOccupationInput.value = userOccupationElement.textContent;
 }
 
 //Создаем функцию, которая удаляет класс с правилом flex
+//и закрывает попап
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
-
-//Хардкодим в переменные исходные данные пользователя из макета
-let userName = "Жак-Ив Кусто";
-let userOccupation = "Исследователь океана";
-
-//Создаём константы для имени и профессии в блоке профиль
-const userNameElement = document.querySelector(".profile__name");
-userNameElement.textContent = userName;
-
-const userOccupationElement = document.querySelector(".profile__occupation");
-userOccupationElement.textContent = userOccupation;
-
-//Создаём константы для формы
-const formEditProfile = document.querySelector(".popup__container");
-const userNameInput = document.querySelector("#user-name-input");
-userNameInput.value = userName;
-const userOccupationInput = document.querySelector("#user-occupation-input");
-userOccupationInput.value = userOccupation;
-const saveButton = document.querySelector(".popup__button-save");
 
 //Создаём функцию сабмита формы редактирования профиля
 function changeUser(evt) {
   evt.preventDefault();
   userNameElement.textContent = userNameInput.value;
   userOccupationElement.textContent = userOccupationInput.value;
+  closePopup(editPopup);
 }
 
 //Создаём слушатель события на отправку введённых данных
 formEditProfile.addEventListener("submit", changeUser);
-
-//Закрываем попап по клику "Сохранить" или нажатию Enter
-saveButton.addEventListener("click", function () {
-  closePopup(editPopup);
-});

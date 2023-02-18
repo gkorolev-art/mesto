@@ -1,9 +1,6 @@
 .header {
   margin: 45px auto 40px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  row-gap: 41px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   font-size: 0;
 }
 
