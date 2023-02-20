@@ -11,7 +11,7 @@
 
 @media screen and (max-width: 968px) {
   .profile__info {
-    max-width: 217px;
+    max-width: 282px;
     column-gap: 10px;
     margin: 30px 26px 30px;
   }
@@ -20,7 +20,6 @@
 @media screen and (max-width: 638px) {
   .profile__info {
     grid-template-columns: 235px 1fr;
-    max-width: 282px;
     margin: 26px 0 0;
   }
 }

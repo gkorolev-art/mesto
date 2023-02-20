@@ -11,12 +11,14 @@
 
 @media screen and (max-width: 968px) {
   .profile__occupation {
+    max-width: 254px;
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 638px) {
   .profile__occupation {
+    max-width: 100%;
     text-align: center;
     grid-column: 1 / span 2;
   }
