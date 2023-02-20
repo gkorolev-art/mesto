@@ -12,7 +12,7 @@ const userNameElement = document.querySelector(".profile__name");
 const userOccupationElement = document.querySelector(".profile__occupation");
 
 //Создаём константы для формы
-const formEditProfile = document.querySelector(".popup__container");
+const formEditProfile = document.querySelector(".popup__form");
 const userNameInput = document.querySelector("#user-name-input");
 const userOccupationInput = document.querySelector("#user-occupation-input");
 const saveButton = document.querySelector(".popup__button-save");
