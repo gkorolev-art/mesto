@@ -20,6 +20,7 @@
 
 @import url(../blocks/item/item.css);
 @import url(../blocks/item/__picture/item__picture.css);
+@import url(../blocks/item/__trash/item__trash.css);
 @import url(../blocks/item/__caption/item__caption.css);
 @import url(../blocks/item/__heading/item__heading.css);
 @import url(../blocks/item/__like/item__like.css);

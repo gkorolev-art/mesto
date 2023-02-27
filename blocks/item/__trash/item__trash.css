@@ -1,0 +1,12 @@
+.item__trash {
+  background-image: url(../../../images/trash-icon.svg);
+  width: 18px;
+  height: 19px;
+  fill: none;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

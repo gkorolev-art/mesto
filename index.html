@@ -39,77 +39,7 @@
         </button>
       </section>
       <section class="elements">
-        <ul class="elements__list">
-          <li class="item">
-            <img
-              class="item__picture"
-              src="./images/elements/karachaevsk.png"
-              alt="Карачаевск"
-            />
-            <div class="item__caption">
-              <h2 class="item__heading">Карачаевск</h2>
-              <button class="item__like" type="button"></button>
-            </div>
-          </li>
-          <li class="item">
-            <img
-              class="item__picture"
-              src="./images/elements/elbrus.png"
-              alt="Эльбрус"
-            />
-            <div class="item__caption">
-              <h2 class="item__heading">Гора Эльбрус</h2>
-              <button
-                class="item__like item__like_active"
-                type="button"
-              ></button>
-            </div>
-          </li>
-          <li class="item">
-            <img
-              class="item__picture"
-              src="./images/elements/dombai.png"
-              alt="Домбай"
-            />
-            <div class="item__caption">
-              <h2 class="item__heading">Домбай</h2>
-              <button class="item__like" type="button"></button>
-            </div>
-          </li>
-          <li class="item">
-            <img
-              class="item__picture"
-              src="./images/elements/elbrus.png"
-              alt="Эльбрус"
-            />
-            <div class="item__caption">
-              <h2 class="item__heading">Гора Эльбрус</h2>
-              <button class="item__like" type="button"></button>
-            </div>
-          </li>
-          <li class="item">
-            <img
-              class="item__picture"
-              src="./images/elements/dombai.png"
-              alt="Домбай"
-            />
-            <div class="item__caption">
-              <h2 class="item__heading">Домбай</h2>
-              <button class="item__like" type="button"></button>
-            </div>
-          </li>
-          <li class="item">
-            <img
-              class="item__picture"
-              src="./images/elements/karachaevsk.png"
-              alt="Карачаево-Черкесия"
-            />
-            <div class="item__caption">
-              <h2 class="item__heading">Карачаево-Черкесия</h2>
-              <button class="item__like" type="button"></button>
-            </div>
-          </li>
-        </ul>
+        <ul class="elements__list"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -145,5 +75,16 @@
         </form>
       </div>
     </div>
+
+    <template id="card">
+      <li class="item">
+        <img class="item__picture" src="" alt="" />
+        <button class="item__trash hover" type="button"></button>
+        <div class="item__caption">
+          <h2 class="item__heading"></h2>
+          <button class="item__like" type="button"></button>
+        </div>
+      </li>
+    </template>
   </body>
 </html>

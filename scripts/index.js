@@ -11,7 +11,47 @@ const editProfileCloseButton = document.querySelector(".popup__close");
 const userNameElement = document.querySelector(".profile__name");
 const userOccupationElement = document.querySelector(".profile__occupation");
 
-//Создаём константы для формы
+//Массив загружаемых по умолчанию карточек
+const initialCards = [
+  {
+    name: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    name: "Челябинская область",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    name: "Иваново",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    name: "Камчатка",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    name: "Холмогорский район",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    name: "Байкал",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
+
+//Шаблон карточки и её добавление в блок Elements
+const cards = document.querySelector(".elements__list");
+const cardTemplate = document.querySelector("#card").content;
+
+initialCards.forEach(function (place) {
+  const cardElement = cardTemplate.cloneNode(true);
+  cardElement.querySelector(".item__picture").src = place.link;
+  cardElement.querySelector(".item__heading").textContent = place.name;
+
+  cards.append(cardElement);
+});
+
+//Создаём константы для формы редактирования профиля
 const formEditProfile = document.querySelector(".popup__form");
 const userNameInput = document.querySelector("#user-name-input");
 const userOccupationInput = document.querySelector("#user-occupation-input");
