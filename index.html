@@ -39,19 +39,33 @@
         </button>
       </section>
       <section class="elements">
-        <ul class="elements__list"></ul>
+        <ul class="elements__list">
+          <template id="card">
+            <li class="item">
+              <img class="item__picture" src="#" alt="#" />
+              <button class="item__trash hover" type="button"></button>
+              <div class="item__caption">
+                <h2 class="item__heading"></h2>
+                <button class="item__like" type="button"></button>
+              </div>
+            </li>
+          </template>
+        </ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__text" lang="en">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup_type_edit-profile">
       <div class="popup__container">
-        <button type="button" class="popup__close hover">
+        <button
+          type="button"
+          class="popup__close popup__close_loc_edit-profile hover"
+        >
           <span class="sr-only">Закрыть</span>
         </button>
-        <form name="edit-profile" class="popup__form">
+        <form name="edit-profile" class="popup__form popup__form_loc_profile">
           <h3 class="popup__heading">Редактировать профиль</h3>
           <input
             class="popup__input"
@@ -71,20 +85,52 @@
             value=""
             required
           />
-          <button class="popup__button-save" type="submit">Сохранить</button>
+          <button
+            class="popup__button popup__button_type_save-profile"
+            type="submit"
+          >
+            Сохранить
+          </button>
         </form>
       </div>
     </div>
 
-    <template id="card">
-      <li class="item">
-        <img class="item__picture" src="" alt="" />
-        <button class="item__trash hover" type="button"></button>
-        <div class="item__caption">
-          <h2 class="item__heading"></h2>
-          <button class="item__like" type="button"></button>
-        </div>
-      </li>
-    </template>
+    <div class="popup popup_type_add-place">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="popup__close popup__close_loc_new-place hover"
+        >
+          <span class="sr-only">Закрыть</span>
+        </button>
+        <form name="create-place" class="popup__form popup__form_loc_new-place">
+          <h3 class="popup__heading">Новое место</h3>
+          <input
+            class="popup__input"
+            type="text"
+            name="name"
+            id="new-place-name-input"
+            placeholder="Название"
+            value=""
+            required
+          />
+          <input
+            class="popup__input"
+            type="url"
+            name="url"
+            id="new-place-url-input"
+            placeholder="Ссылка на картинку"
+            value=""
+            required
+          />
+          <button
+            class="popup__button popup__button_type_add-place"
+            type="submit"
+          >
+            Создать
+          </button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,16 +1,3 @@
-//Создаем константу для кнопки редактирования профиля
-const editProfileButton = document.querySelector(".profile__edit-button");
-
-//Создаем константу для попапа
-const editPopup = document.querySelector(".popup");
-
-//Создаём константу для кнопки закрытия попапа
-const editProfileCloseButton = document.querySelector(".popup__close");
-
-//Создаём константы для имени и профессии в блоке профиль
-const userNameElement = document.querySelector(".profile__name");
-const userOccupationElement = document.querySelector(".profile__occupation");
-
 //Массив загружаемых по умолчанию карточек
 const initialCards = [
   {
@@ -39,35 +26,80 @@ const initialCards = [
   },
 ];
 
-//Шаблон карточки и её добавление в блок Elements
+//Константы для профиля
+const editProfileButton = document.querySelector(".profile__edit-button");
+const userNameElement = document.querySelector(".profile__name");
+const userOccupationElement = document.querySelector(".profile__occupation");
+const addNewPlaceButton = document.querySelector(".profile__add-button");
+
+//Константы для попапов
+const editProfilePopup = document.querySelector(".popup_type_edit-profile");
+const editProfileCloseButton = document.querySelector(
+  ".popup__close_loc_edit-profile"
+);
+const addNewPlacePopup = document.querySelector(".popup_type_add-place");
+const closeNewPlaceButton = document.querySelector(
+  ".popup__close_loc_new-place"
+);
+
+//Константы для формы редактирования профиля
+const formEditProfile = document.querySelector(".popup__form_loc_profile");
+const userNameInput = document.querySelector("#user-name-input");
+const userOccupationInput = document.querySelector("#user-occupation-input");
+const saveButton = document.querySelector(".popup__button_type_save-profile");
+
+//Константы для формы добавления нового места
+const formNewPlace = document.querySelector(".popup__form_loc_new-place");
+const newPlaceNameInput = document.querySelector("#new-place-name-input");
+const newPlaceUrlInput = document.querySelector("#new-place-url-input");
+const addPlaceButton = document.querySelector(".popup__button_type_add-place");
+
+//Шаблон карточки, её добавление (и удаление) в блок Elements
 const cards = document.querySelector(".elements__list");
 const cardTemplate = document.querySelector("#card").content;
 
-initialCards.forEach(function (place) {
-  const cardElement = cardTemplate.cloneNode(true);
-  cardElement.querySelector(".item__picture").src = place.link;
-  cardElement.querySelector(".item__heading").textContent = place.name;
+function createCard(card) {
+  const newCard = cardTemplate.cloneNode(true);
+  const cardName = newCard.querySelector(".item__heading");
+  cardName.textContent = card.name;
+  const cardImage = newCard.querySelector(".item__picture");
+  cardImage.setAttribute("src", card.link);
+  cardImage.setAttribute("alt", `Фото ${card.name}`);
+  const deleteCardButton = newCard.querySelector(".item__trash");
+  deleteCardButton.addEventListener("click", handleDeleteCardButton);
+  cards.append(newCard);
+}
 
-  cards.append(cardElement);
-});
+initialCards.forEach(createCard);
 
-//Создаём константы для формы редактирования профиля
-const formEditProfile = document.querySelector(".popup__form");
-const userNameInput = document.querySelector("#user-name-input");
-const userOccupationInput = document.querySelector("#user-occupation-input");
-const saveButton = document.querySelector(".popup__button-save");
+//Управление удалением карточки
+function handleDeleteCardButton(event) {
+  const button = event.target;
+  const card = button.closest(".item");
+  card.remove();
+}
 
-//Создаём слушатель события на кнопку открытия попапа по клику
+//Слушатель события на кнопку открытия попапа редактирования профиля по клику
 editProfileButton.addEventListener("click", function () {
-  openPopup(editPopup);
+  openPopup(editProfilePopup);
 });
 
-//Создаём слушатель события на кнопку закрытия попапа по клику на крестик
+//Слушатель события на кнопку закрытия попапа редактирования профиля по клику на крестик
 editProfileCloseButton.addEventListener("click", function () {
-  closePopup(editPopup);
+  closePopup(editProfilePopup);
 });
 
-//Создаем функцию, которая добавляет класс с правилом flex, открывает попап
+//Слушатель события на кнопку добавления нового места
+addNewPlaceButton.addEventListener("click", function () {
+  openPopup(addNewPlacePopup);
+});
+
+//Слушатель события закрытия попапа добавления нового места по клику на крестик
+closeNewPlaceButton.addEventListener("click", function () {
+  closePopup(addNewPlacePopup);
+});
+
+//Функция, которая добавляет класс с правилом flex, открывает попап
 //и отображает в форме текущие значения имени и профессии
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -75,19 +107,21 @@ function openPopup(popup) {
   userOccupationInput.value = userOccupationElement.textContent;
 }
 
-//Создаем функцию, которая удаляет класс с правилом flex
+//Функция, которая удаляет класс с правилом flex
 //и закрывает попап
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-//Создаём функцию сабмита формы редактирования профиля
+//Функция сабмита формы редактирования профиля
 function changeUser(evt) {
   evt.preventDefault();
   userNameElement.textContent = userNameInput.value;
   userOccupationElement.textContent = userOccupationInput.value;
-  closePopup(editPopup);
+  closePopup(editProfilePopup);
 }
 
 //Создаём слушатель события на отправку введённых данных
 formEditProfile.addEventListener("submit", changeUser);
+
+//Функция сабмита добавления нового места
