@@ -46,13 +46,24 @@ const closeNewPlaceButton = document.querySelector(
 const formEditProfile = document.querySelector(".popup__form_loc_profile");
 const userNameInput = document.querySelector("#user-name-input");
 const userOccupationInput = document.querySelector("#user-occupation-input");
-const saveButton = document.querySelector(".popup__button_type_save-profile");
 
 //Константы для формы добавления нового места
 const formNewPlace = document.querySelector(".popup__form_loc_new-place");
 const newPlaceNameInput = document.querySelector("#new-place-name-input");
 const newPlaceUrlInput = document.querySelector("#new-place-url-input");
-const addPlaceButton = document.querySelector(".popup__button_type_add-place");
+
+//Функция сабмита добавления нового места
+function addNewPlace(event) {
+  event.preventDefault();
+  const name = newPlaceNameInput.value;
+  const alt = newPlaceNameInput.value;
+  const link = newPlaceUrlInput.value;
+  const card = { name, alt, link };
+  createCard(card);
+  closePopup(addNewPlacePopup);
+}
+
+formNewPlace.addEventListener("submit", addNewPlace);
 
 //Шаблон карточки, её добавление (и удаление) в блок Elements
 const cards = document.querySelector(".elements__list");
@@ -123,8 +134,8 @@ function closePopup(popup) {
 }
 
 //Функция сабмита формы редактирования профиля
-function changeUser(evt) {
-  evt.preventDefault();
+function changeUser(event) {
+  event.preventDefault();
   userNameElement.textContent = userNameInput.value;
   userOccupationElement.textContent = userOccupationInput.value;
   closePopup(editProfilePopup);
@@ -132,5 +143,3 @@ function changeUser(evt) {
 
 //Создаём слушатель события на отправку введённых данных
 formEditProfile.addEventListener("submit", changeUser);
-
-//Функция сабмита добавления нового места
