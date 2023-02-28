@@ -42,6 +42,10 @@ const closeNewPlaceButton = document.querySelector(
   ".popup__close_loc_new-place"
 );
 
+//Константы блока Elements и шаблона карточки
+const cards = document.querySelector(".elements__list");
+const cardTemplate = document.querySelector("#card").content;
+
 //Константы для формы редактирования профиля
 const formEditProfile = document.querySelector(".popup__form_loc_profile");
 const userNameInput = document.querySelector("#user-name-input");
@@ -65,10 +69,7 @@ function addNewPlace(event) {
 
 formNewPlace.addEventListener("submit", addNewPlace);
 
-//Шаблон карточки, её добавление (и удаление) в блок Elements
-const cards = document.querySelector(".elements__list");
-const cardTemplate = document.querySelector("#card").content;
-
+//Функция создания, удаления и лайкания карточки
 function createCard(card) {
   const newCard = cardTemplate.cloneNode(true);
   const cardName = newCard.querySelector(".item__heading");
@@ -80,7 +81,7 @@ function createCard(card) {
   deleteCardButton.addEventListener("click", handleDeleteCardButton);
   const likeCardButton = newCard.querySelector(".item__like");
   likeCardButton.addEventListener("click", handleLikeCardButton);
-  cards.append(newCard);
+  cards.prepend(newCard);
 }
 
 initialCards.forEach(createCard);
@@ -119,16 +120,14 @@ closeNewPlaceButton.addEventListener("click", function () {
   closePopup(addNewPlacePopup);
 });
 
-//Функция, которая добавляет класс с правилом flex, открывает попап
-//и отображает в форме текущие значения имени и профессии
+//Функция открытия попапа
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   userNameInput.value = userNameElement.textContent;
   userOccupationInput.value = userOccupationElement.textContent;
 }
 
-//Функция, которая удаляет класс с правилом flex
-//и закрывает попап
+//Функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
