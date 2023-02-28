@@ -67,6 +67,8 @@ function createCard(card) {
   cardImage.setAttribute("alt", `Фото ${card.name}`);
   const deleteCardButton = newCard.querySelector(".item__trash");
   deleteCardButton.addEventListener("click", handleDeleteCardButton);
+  const likeCardButton = newCard.querySelector(".item__like");
+  likeCardButton.addEventListener("click", handleLikeCardButton);
   cards.append(newCard);
 }
 
@@ -77,6 +79,13 @@ function handleDeleteCardButton(event) {
   const button = event.target;
   const card = button.closest(".item");
   card.remove();
+}
+
+//Управление лайком карточки
+function handleLikeCardButton(event) {
+  const button = event.target;
+  const card = button.closest(".item__like");
+  card.classList.toggle("item__like_active");
 }
 
 //Слушатель события на кнопку открытия попапа редактирования профиля по клику
