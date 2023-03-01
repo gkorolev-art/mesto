@@ -42,7 +42,7 @@
         <ul class="elements__list">
           <template id="card">
             <li class="item">
-              <img class="item__picture" src="#" alt="#" />
+              <img class="item__picture" role="button" src="#" alt="#" />
               <button class="item__trash hover" type="button"></button>
               <div class="item__caption">
                 <h2 class="item__heading"></h2>
@@ -61,11 +61,11 @@
       <div class="popup__container">
         <button
           type="button"
-          class="popup__close popup__close_loc_edit-profile hover"
+          class="popup__close popup__close_place_edit-profile hover"
         >
           <span class="sr-only">Закрыть</span>
         </button>
-        <form name="edit-profile" class="popup__form popup__form_loc_profile">
+        <form name="edit-profile" class="popup__form popup__form_place_profile">
           <h3 class="popup__heading">Редактировать профиль</h3>
           <input
             class="popup__input"
@@ -99,11 +99,14 @@
       <div class="popup__container">
         <button
           type="button"
-          class="popup__close popup__close_loc_new-place hover"
+          class="popup__close popup__close_place_new-place hover"
         >
           <span class="sr-only">Закрыть</span>
         </button>
-        <form name="create-place" class="popup__form popup__form_loc_new-place">
+        <form
+          name="create-place"
+          class="popup__form popup__form_place_new-place"
+        >
           <h3 class="popup__heading">Новое место</h3>
           <input
             class="popup__input"
@@ -130,6 +133,21 @@
             Создать
           </button>
         </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_full-size-pictire">
+      <div class="popup__container popup__container_place_picture">
+        <button
+          type="button"
+          class="popup__close popup__close_place_picture hover"
+        >
+          <span class="sr-only">Закрыть</span>
+        </button>
+        <figure class="popup__figure">
+          <img class="popup__picture" src="#" alt="#" />
+          <figcaption class="popup__caption"></figcaption>
+        </figure>
       </div>
     </div>
   </body>

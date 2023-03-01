@@ -35,11 +35,11 @@ const addNewPlaceButton = document.querySelector(".profile__add-button");
 //Константы для попапов
 const editProfilePopup = document.querySelector(".popup_type_edit-profile");
 const editProfileCloseButton = document.querySelector(
-  ".popup__close_loc_edit-profile"
+  ".popup__close_place_edit-profile"
 );
 const addNewPlacePopup = document.querySelector(".popup_type_add-place");
 const closeNewPlaceButton = document.querySelector(
-  ".popup__close_loc_new-place"
+  ".popup__close_place_new-place"
 );
 
 //Константы блока Elements и шаблона карточки
@@ -47,12 +47,12 @@ const cards = document.querySelector(".elements__list");
 const cardTemplate = document.querySelector("#card").content;
 
 //Константы для формы редактирования профиля
-const formEditProfile = document.querySelector(".popup__form_loc_profile");
+const formEditProfile = document.querySelector(".popup__form_place_profile");
 const userNameInput = document.querySelector("#user-name-input");
 const userOccupationInput = document.querySelector("#user-occupation-input");
 
 //Константы для формы добавления нового места
-const formNewPlace = document.querySelector(".popup__form_loc_new-place");
+const formNewPlace = document.querySelector(".popup__form_place_new-place");
 const newPlaceNameInput = document.querySelector("#new-place-name-input");
 const newPlaceUrlInput = document.querySelector("#new-place-url-input");
 
@@ -68,23 +68,6 @@ function addNewPlace(event) {
 }
 
 formNewPlace.addEventListener("submit", addNewPlace);
-
-//Функция создания, удаления и лайкания карточки
-function createCard(card) {
-  const newCard = cardTemplate.cloneNode(true);
-  const cardName = newCard.querySelector(".item__heading");
-  cardName.textContent = card.name;
-  const cardImage = newCard.querySelector(".item__picture");
-  cardImage.setAttribute("src", card.link);
-  cardImage.setAttribute("alt", `Фото ${card.name}`);
-  const deleteCardButton = newCard.querySelector(".item__trash");
-  deleteCardButton.addEventListener("click", handleDeleteCardButton);
-  const likeCardButton = newCard.querySelector(".item__like");
-  likeCardButton.addEventListener("click", handleLikeCardButton);
-  cards.prepend(newCard);
-}
-
-initialCards.forEach(createCard);
 
 //Управление удалением карточки
 function handleDeleteCardButton(event) {
@@ -125,6 +108,10 @@ function openPopup(popup) {
   popup.classList.add("popup_opened");
   userNameInput.value = userNameElement.textContent;
   userOccupationInput.value = userOccupationElement.textContent;
+  newPlaceNameInput.value = "";
+  newPlaceUrlInput.value = "";
+  picture.src = "https://mayel.ru/wp-content/uploads/2020/10/winter.jpg";
+  pictureCaption.textContent = "Карелия";
 }
 
 //Функция закрытия попапа
@@ -142,3 +129,37 @@ function changeUser(event) {
 
 //Создаём слушатель события на отправку введённых данных
 formEditProfile.addEventListener("submit", changeUser);
+
+const picturePopup = document.querySelector(".popup_type_full-size-pictire");
+const closePictureButton = document.querySelector(
+  ".popup__close_place_picture"
+);
+
+const picture = picturePopup.querySelector(".popup__picture");
+const pictureCaption = picturePopup.querySelector(".popup__caption");
+
+//Функция создания, удаления и лайкания карточки
+function createCard(card) {
+  const newCard = cardTemplate.cloneNode(true);
+  const cardName = newCard.querySelector(".item__heading");
+  cardName.textContent = card.name;
+  const cardImage = newCard.querySelector(".item__picture");
+  cardImage.setAttribute("src", card.link);
+  cardImage.setAttribute("alt", `Фото ${card.name}`);
+  const deleteCardButton = newCard.querySelector(".item__trash");
+  deleteCardButton.addEventListener("click", handleDeleteCardButton);
+  const likeCardButton = newCard.querySelector(".item__like");
+  likeCardButton.addEventListener("click", handleLikeCardButton);
+  cards.prepend(newCard);
+
+  cardImage.addEventListener("click", function () {
+    openPopup(picturePopup);
+  });
+}
+
+initialCards.forEach(createCard);
+
+// Слушатель события закрытия попапа с изображением по клику на крестик
+closePictureButton.addEventListener("click", function () {
+  closePopup(picturePopup);
+});
