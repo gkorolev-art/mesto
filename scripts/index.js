@@ -111,7 +111,7 @@ popupFormNewPlace.addEventListener("submit", (event) => {
   event.preventDefault();
   renderCard({
     name: popupNewPlaceNameInput.value,
-    alt: popupNewPlaceNameInput.value,
+    alt: `Фото' ${popupNewPlaceNameInput.value}`,
     link: popupNewPlaceUrlInput.value,
   });
   closePopup(popupNewPlace);
