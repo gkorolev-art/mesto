@@ -89,6 +89,15 @@ const handleEscClosePopup = (event) => {
   }
 };
 
+//Закрытие попапа при клике на overlay
+popups.forEach((popup) => {
+  popup.addEventListener("click", (event) => {
+    if (event.target === event.currentTarget) {
+      closePopup(popup);
+    }
+  });
+});
+
 //Функция открытия попапа редактирования профиля по клику
 profileEditButton.addEventListener("click", () => {
   openPopup(popupEditProfile);
