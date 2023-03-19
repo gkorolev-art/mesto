@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 50px;
   background-color: rgba(0, 0, 0, 1);
-  margin: 48px auto 0;
+  margin: 4px auto 0;
   padding: 0;
   border: 0;
   border-radius: 2px;
@@ -21,6 +21,6 @@
   .popup__button {
     min-height: 46px;
     font-size: 14px;
-    margin-top: 45px;
+    margin-top: 8px;
   }
 }

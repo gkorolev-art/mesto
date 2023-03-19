@@ -91,7 +91,7 @@ const handleEscClosePopup = (event) => {
 
 //Закрытие попапа при клике на overlay
 popups.forEach((popup) => {
-  popup.addEventListener("click", (event) => {
+  popup.addEventListener("mousedown", (event) => {
     if (event.target === event.currentTarget) {
       closePopup(popup);
     }

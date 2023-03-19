@@ -9,6 +9,7 @@
     <title lang="en">Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
   </head>
   <body class="page">
     <header class="header">
@@ -65,7 +66,11 @@
         >
           <span class="sr-only">Закрыть</span>
         </button>
-        <form name="edit-profile" class="popup__form popup__form_place_profile">
+        <form
+          novalidate
+          name="edit-profile"
+          class="popup__form popup__form_place_profile"
+        >
           <h3 class="popup__heading">Редактировать профиль</h3>
           <input
             class="popup__input"
@@ -74,8 +79,11 @@
             id="user-name-input"
             placeholder="Имя"
             value=""
+            minlength="2"
+            maxlength="40"
             required
           />
+          <span class="popup__input-error user-name-input-error"></span>
           <input
             class="popup__input"
             type="text"
@@ -83,8 +91,11 @@
             id="user-occupation-input"
             placeholder="Профессия"
             value=""
+            minlength="2"
+            maxlength="200"
             required
           />
+          <span class="popup__input-error user-occupation-input-error"></span>
           <button
             class="popup__button popup__button_type_save-profile"
             type="submit"
@@ -104,6 +115,7 @@
           <span class="sr-only">Закрыть</span>
         </button>
         <form
+          novalidate
           name="create-place"
           class="popup__form popup__form_place_new-place"
         >
@@ -115,8 +127,11 @@
             id="new-place-name-input"
             placeholder="Название"
             value=""
+            minlength="2"
+            maxlength="30"
             required
           />
+          <span class="popup__input-error new-place-name-input-error"></span>
           <input
             class="popup__input"
             type="url"
@@ -126,6 +141,7 @@
             value=""
             required
           />
+          <span class="popup__input-error new-place-url-input-error"></span>
           <button
             class="popup__button popup__button_type_add-place"
             type="submit"
