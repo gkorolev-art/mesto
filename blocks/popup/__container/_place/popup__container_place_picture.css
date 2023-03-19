@@ -1,5 +1,5 @@
 .popup__container_place_picture {
-  max-width: 75vw;
+  width: auto;
   max-height: 75vh;
   background-color: transparent;
 }

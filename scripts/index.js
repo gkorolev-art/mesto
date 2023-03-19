@@ -57,27 +57,46 @@ const popupPictureCaption = popupPicture.querySelector(".popup__caption");
 const cardsGrid = document.querySelector(".elements__list");
 const cardTemplate = document.querySelector("#card").content;
 
-//КНОПКИ (КРЕСТИКИ) ЗАКРЫТИЯ ПОПАПОВ
-const closeButtonEditProfile = document.querySelector(
-  ".popup__close_place_edit-profile"
-);
-
-const closeButtonNewPlace = document.querySelector(
-  ".popup__close_place_new-place"
-);
-const closeButtonPicture = document.querySelector(
-  ".popup__close_place_picture"
-);
+//ВСЕ попапы и ВСЕ крестики
+const popups = document.querySelectorAll(".popup");
+const closePopupButtons = document.querySelectorAll(".popup__close");
 
 //Функция открытия попапа
 const openPopup = (popup) => {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", handleEscClosePopup);
 };
 
 //Функция закрытия попапа
 const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", handleEscClosePopup);
 };
+
+//Универсальное закрытие любого попапа при клике на крестик
+closePopupButtons.forEach((item) => {
+  item.addEventListener("click", (event) => {
+    const closestPopup = event.target.closest(".popup");
+    closePopup(closestPopup);
+  });
+});
+
+//Управление закрытием попапов при клике на Esc
+const handleEscClosePopup = (event) => {
+  if (event.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+};
+
+//Закрытие попапа при клике на overlay
+popups.forEach((popup) => {
+  popup.addEventListener("mousedown", (event) => {
+    if (event.target === event.currentTarget) {
+      closePopup(popup);
+    }
+  });
+});
 
 //Функция открытия попапа редактирования профиля по клику
 profileEditButton.addEventListener("click", () => {
@@ -91,11 +110,6 @@ popupFormEditProfile.addEventListener("submit", (event) => {
   event.preventDefault();
   userNameElement.textContent = popupUserNameInput.value;
   userOccupationElement.textContent = popupUserOccupationInput.value;
-  closePopup(popupEditProfile);
-});
-
-//Закрытие попапа редактирования профиля по клику на крестик
-closeButtonEditProfile.addEventListener("click", () => {
   closePopup(popupEditProfile);
 });
 
@@ -117,11 +131,6 @@ popupFormNewPlace.addEventListener("submit", (event) => {
   closePopup(popupNewPlace);
 });
 
-//Функция закрытия попапа добавления нового места по клику на крестик
-closeButtonNewPlace.addEventListener("click", () => {
-  closePopup(popupNewPlace);
-});
-
 //Управление открытием полноэкранного изображения
 const handleFullsizePicture = (cardPicture) => {
   cardPicture.addEventListener("click", (event) => {
@@ -131,11 +140,6 @@ const handleFullsizePicture = (cardPicture) => {
     popupPictureCaption.textContent = event.target.closest(".item").textContent;
   });
 };
-
-//Закрытие попапа с полноэкранным изображением по клику на крестик
-closeButtonPicture.addEventListener("click", () => {
-  closePopup(popupPicture);
-});
 
 //Функция добавления нового места в начало
 const renderCard = (cardItem) => {

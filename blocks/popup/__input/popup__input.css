@@ -4,12 +4,9 @@
   line-height: 1.21;
   width: 100%;
   min-height: 27px;
-  margin: 0 auto 30px;
+  margin: 0 auto 5px;
   padding: 0;
   border-style: none;
+  outline: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.popup__input:last-of-type {
-  margin-bottom: 0;
 }
