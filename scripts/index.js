@@ -134,6 +134,7 @@ profileEditButton.addEventListener("click", () => {
   openPopup(popupEditProfile);
   popupUserNameInput.value = userNameElement.textContent;
   popupUserOccupationInput.value = userOccupationElement.textContent;
+  resetValidation(objectValidation);
 });
 
 //Функция сабмита формы редактирования профиля
