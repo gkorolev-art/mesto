@@ -98,6 +98,37 @@ popups.forEach((popup) => {
   });
 });
 
+//Объект валидации
+const objectValidation = {
+  inputSelector: ".popup__input",
+  inputErrorClass: "popup__input_type_error",
+  submitButtonSelector: ".popup__button",
+  submitButtonDisabledClass: "popup__button_disabled",
+};
+
+//Сброс полей валидации
+const resetValidation = (objectValidation) => {
+  resetInput(objectValidation);
+  resetSubmitButton(objectValidation);
+};
+
+const resetInput = (objectValidation) => {
+  const inputList = document.querySelectorAll(objectValidation.inputSelector);
+  inputList.forEach((inputElement) => {
+    inputElement.classList.remove(objectValidation.inputErrorClass);
+  });
+};
+
+const resetSubmitButton = (objectValidation) => {
+  const submitButton = document.querySelectorAll(
+    objectValidation.submitButtonSelector
+  );
+  submitButton.forEach((submitButton) => {
+    submitButton.classList.add(objectValidation.submitButtonDisabledClass);
+    submitButton.setAttribute("disabled", "");
+  });
+};
+
 //Функция открытия попапа редактирования профиля по клику
 profileEditButton.addEventListener("click", () => {
   openPopup(popupEditProfile);
@@ -116,8 +147,6 @@ popupFormEditProfile.addEventListener("submit", (event) => {
 //Функция открытия попапа добавления нового места
 newPlaceAddButton.addEventListener("click", () => {
   openPopup(popupNewPlace);
-  popupNewPlaceNameInput.value = "";
-  popupNewPlaceUrlInput.value = "";
 });
 
 //Функция сабмита и сохранения нового места
@@ -128,6 +157,8 @@ popupFormNewPlace.addEventListener("submit", (event) => {
     alt: `Фото' ${popupNewPlaceNameInput.value}`,
     link: popupNewPlaceUrlInput.value,
   });
+  popupFormNewPlace.reset();
+  resetValidation(objectValidation);
   closePopup(popupNewPlace);
 });
 
