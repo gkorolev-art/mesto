@@ -1,30 +1,5 @@
-//Массив загружаемых по умолчанию карточек
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+import { initialCards } from "./utils.js";
+import { Card } from "./Card.js";
 
 //ПРОФИЛЬ
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -53,13 +28,37 @@ const popupPicture = document.querySelector(".popup_type_full-size-pictire");
 const popupPictureElement = popupPicture.querySelector(".popup__picture");
 const popupPictureCaption = popupPicture.querySelector(".popup__caption");
 
-//СЕТКА КАРТОЧЕК И ШАБЛОН КАРТОЧКИ
+//СЕТКА КАРТОЧЕК
 const cardsGrid = document.querySelector(".elements__list");
-const cardTemplate = document.querySelector("#card").content;
 
 //ВСЕ попапы и ВСЕ крестики
 const popups = document.querySelectorAll(".popup");
 const closePopupButtons = document.querySelectorAll(".popup__close");
+
+//Функция создания карточки
+const createCard = (data) => {
+  const card = new Card(data, "#card", handleFullsizePicture);
+
+  return card.generateCard();
+};
+
+//Управление открытием полноэкранного изображения
+const handleFullsizePicture = (cardPicture) => {
+  openPopup(popupPicture);
+  popupPictureElement.src = cardPicture.link;
+  popupPictureElement.alt = cardPicture.name;
+  popupPictureCaption.textContent = cardPicture.name;
+};
+
+//Функция добавления нового места в начало
+const renderCard = (cardItem) => {
+  cardsGrid.prepend(createCard(cardItem));
+};
+
+//Создание карточек по умолчанию в порядке массива
+initialCards.forEach((cardItem) => {
+  cardsGrid.append(createCard(cardItem));
+});
 
 //Функция открытия попапа
 const openPopup = (popup) => {
@@ -98,37 +97,6 @@ popups.forEach((popup) => {
   });
 });
 
-//Объект валидации
-const objectValidation = {
-  inputSelector: ".popup__input",
-  inputErrorClass: "popup__input_type_error",
-  submitButtonSelector: ".popup__button",
-  submitButtonDisabledClass: "popup__button_disabled",
-};
-
-//Сброс полей валидации
-const resetValidation = (objectValidation) => {
-  resetInput(objectValidation);
-  resetSubmitButton(objectValidation);
-};
-
-const resetInput = (objectValidation) => {
-  const inputList = document.querySelectorAll(objectValidation.inputSelector);
-  inputList.forEach((inputElement) => {
-    inputElement.classList.remove(objectValidation.inputErrorClass);
-  });
-};
-
-const resetSubmitButton = (objectValidation) => {
-  const submitButton = document.querySelectorAll(
-    objectValidation.submitButtonSelector
-  );
-  submitButton.forEach((submitButton) => {
-    submitButton.classList.add(objectValidation.submitButtonDisabledClass);
-    submitButton.setAttribute("disabled", "");
-  });
-};
-
 //Функция открытия попапа редактирования профиля по клику
 profileEditButton.addEventListener("click", () => {
   openPopup(popupEditProfile);
@@ -162,55 +130,33 @@ popupFormNewPlace.addEventListener("submit", (event) => {
   closePopup(popupNewPlace);
 });
 
-//Управление открытием полноэкранного изображения
-const handleFullsizePicture = (cardPicture) => {
-  cardPicture.addEventListener("click", (event) => {
-    openPopup(popupPicture);
-    popupPictureElement.src = cardPicture.src;
-    popupPictureElement.alt = cardPicture.alt;
-    popupPictureCaption.textContent = event.target.closest(".item").textContent;
+//Объект валидации
+const objectValidation = {
+  inputSelector: ".popup__input",
+  inputErrorClass: "popup__input_type_error",
+  submitButtonSelector: ".popup__button",
+  submitButtonDisabledClass: "popup__button_disabled",
+};
+
+//Сброс полей валидации
+const resetValidation = (objectValidation) => {
+  resetInput(objectValidation);
+  resetSubmitButton(objectValidation);
+};
+
+const resetInput = (objectValidation) => {
+  const inputList = document.querySelectorAll(objectValidation.inputSelector);
+  inputList.forEach((inputElement) => {
+    inputElement.classList.remove(objectValidation.inputErrorClass);
   });
 };
 
-//Функция добавления нового места в начало
-const renderCard = (cardItem) => {
-  cardsGrid.prepend(createCard(cardItem));
-};
-
-//Управление удалением карточки
-const handleDeleteCard = (cardItem) => {
-  cardItem.addEventListener("click", (event) => {
-    event.target.closest(".item").remove();
+const resetSubmitButton = (objectValidation) => {
+  const submitButton = document.querySelectorAll(
+    objectValidation.submitButtonSelector
+  );
+  submitButton.forEach((submitButton) => {
+    submitButton.classList.add(objectValidation.submitButtonDisabledClass);
+    submitButton.setAttribute("disabled", "");
   });
 };
-
-//Управление лайком карточки
-const handleLikeCard = (likeButton) => {
-  likeButton.addEventListener("click", (event) => {
-    event.target.classList.toggle("item__like_active");
-  });
-};
-
-//ФУНКЦИЯ СОЗДАНИЯ КАРТОЧКИ
-const createCard = (cardItem) => {
-  const newCard = cardTemplate.cloneNode(true);
-  const nameNewCard = newCard.querySelector(".item__heading");
-  const pictureNewCard = newCard.querySelector(".item__picture");
-  const deleteCardButton = newCard.querySelector(".item__trash");
-  const likeCardButton = newCard.querySelector(".item__like");
-
-  nameNewCard.textContent = cardItem.name;
-  pictureNewCard.setAttribute("src", cardItem.link);
-  pictureNewCard.setAttribute("alt", `Фото ${cardItem.name}`);
-
-  handleLikeCard(likeCardButton);
-  handleDeleteCard(deleteCardButton);
-  handleFullsizePicture(pictureNewCard);
-
-  return newCard;
-};
-
-//Создание карточек по умолчанию в порядке массива
-initialCards.forEach((cardItem) => {
-  cardsGrid.append(createCard(cardItem));
-});
