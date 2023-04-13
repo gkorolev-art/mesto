@@ -1,4 +1,5 @@
-import { initialCards } from "./utils.js";
+import { initialCards, validationConfig } from "./utils.js";
+import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
 
 //ПРОФИЛЬ
@@ -102,6 +103,7 @@ profileEditButton.addEventListener("click", () => {
   openPopup(popupEditProfile);
   popupUserNameInput.value = userNameElement.textContent;
   popupUserOccupationInput.value = userOccupationElement.textContent;
+  validationProfileForm.resetValidation();
 });
 
 //Функция сабмита формы редактирования профиля
@@ -122,41 +124,22 @@ popupFormNewPlace.addEventListener("submit", (event) => {
   event.preventDefault();
   renderCard({
     name: popupNewPlaceNameInput.value,
-    alt: popupNewPlaceNameInput.value,
+    alt: `Фото .${popupNewPlaceNameInput.value}`,
     link: popupNewPlaceUrlInput.value,
   });
   popupFormNewPlace.reset();
-  resetValidation(objectValidation);
+  validationNewPlaceForm.resetValidation();
   closePopup(popupNewPlace);
 });
 
-//Объект валидации
-const objectValidation = {
-  inputSelector: ".popup__input",
-  inputErrorClass: "popup__input_type_error",
-  submitButtonSelector: ".popup__button",
-  submitButtonDisabledClass: "popup__button_disabled",
-};
+const validationProfileForm = new FormValidator(
+  validationConfig,
+  popupFormEditProfile
+);
+validationProfileForm.enableValidation();
 
-//Сброс полей валидации
-const resetValidation = (objectValidation) => {
-  resetInput(objectValidation);
-  resetSubmitButton(objectValidation);
-};
-
-const resetInput = (objectValidation) => {
-  const inputList = document.querySelectorAll(objectValidation.inputSelector);
-  inputList.forEach((inputElement) => {
-    inputElement.classList.remove(objectValidation.inputErrorClass);
-  });
-};
-
-const resetSubmitButton = (objectValidation) => {
-  const submitButton = document.querySelectorAll(
-    objectValidation.submitButtonSelector
-  );
-  submitButton.forEach((submitButton) => {
-    submitButton.classList.add(objectValidation.submitButtonDisabledClass);
-    submitButton.setAttribute("disabled", "");
-  });
-};
+const validationNewPlaceForm = new FormValidator(
+  validationConfig,
+  popupFormNewPlace
+);
+validationNewPlaceForm.enableValidation();
