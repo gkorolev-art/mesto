@@ -1,9 +1,9 @@
 class FormValidator {
   constructor(config, form) {
     this._form = form;
-    this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
+    this._submitButton = this._form.querySelector(this._submitButtonSelector);
     this._submitButtonDisabledClass = config.submitButtonDisabledClass;
     this._inputErrorClass = config.inputErrorClass;
   }
@@ -29,12 +29,11 @@ class FormValidator {
   }
 
   _toggleButtonState() {
-    this._submitButton = this._form.querySelector(this._submitButtonSelector);
-    this._isFormValid = this._form.checkValidity();
-    this._submitButton.disabled = !this._isFormValid;
+    const isFormValid = this._form.checkValidity();
+    this._submitButton.disabled = !isFormValid;
     this._submitButton.classList.toggle(
       this._submitButtonDisabledClass,
-      !this._isFormValid
+      !isFormValid
     );
   }
 

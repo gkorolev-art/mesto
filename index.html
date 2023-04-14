@@ -9,7 +9,6 @@
     <title lang="en">Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
     <script type="module" src="./scripts/index.js" defer></script>
-    <script src="./scripts/validate.js" defer></script>
   </head>
   <body class="page">
     <header class="header">
@@ -78,7 +77,6 @@
             name="name"
             id="user-name-input"
             placeholder="Имя"
-            value=""
             minlength="2"
             maxlength="40"
             required
@@ -90,7 +88,6 @@
             name="occupation"
             id="user-occupation-input"
             placeholder="Профессия"
-            value=""
             minlength="2"
             maxlength="200"
             required
@@ -126,7 +123,6 @@
             name="name"
             id="new-place-name-input"
             placeholder="Название"
-            value=""
             minlength="2"
             maxlength="30"
             required
@@ -138,7 +134,6 @@
             name="url"
             id="new-place-url-input"
             placeholder="Ссылка на картинку"
-            value=""
             required
           />
           <span class="popup__input-error new-place-url-input-error"></span>
@@ -152,7 +147,7 @@
       </div>
     </div>
 
-    <div class="popup popup_type_full-size-pictire">
+    <div class="popup popup_type_full-size-picture">
       <div class="popup__container popup__container_place_picture">
         <button
           type="button"

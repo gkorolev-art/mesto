@@ -37,6 +37,10 @@ class Card {
 
   _handleDeleteCard() {
     this._cardElement.remove();
+    this._nameNewCard = null;
+    this._pictureNewCard = null;
+    this._likeCardButton = null;
+    this._deleteCardButton = null;
     this._cardElement = null;
   }
 

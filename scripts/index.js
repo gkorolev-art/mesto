@@ -1,4 +1,4 @@
-import { initialCards, validationConfig } from "./utils.js";
+import { initialCards, validationConfig } from "./constants.js";
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
 
@@ -25,7 +25,7 @@ const popupNewPlaceNameInput = document.querySelector("#new-place-name-input");
 const popupNewPlaceUrlInput = document.querySelector("#new-place-url-input");
 
 //ПОЛНОРАЗМЕРНОЕ ИЗОБРАЖЕНИЕ
-const popupPicture = document.querySelector(".popup_type_full-size-pictire");
+const popupPicture = document.querySelector(".popup_type_full-size-picture");
 const popupPictureElement = popupPicture.querySelector(".popup__picture");
 const popupPictureCaption = popupPicture.querySelector(".popup__caption");
 
@@ -103,7 +103,7 @@ profileEditButton.addEventListener("click", () => {
   openPopup(popupEditProfile);
   popupUserNameInput.value = userNameElement.textContent;
   popupUserOccupationInput.value = userOccupationElement.textContent;
-  validationProfileForm.resetValidation();
+  profileFormValidator.resetValidation();
 });
 
 //Функция сабмита формы редактирования профиля
@@ -128,18 +128,18 @@ popupFormNewPlace.addEventListener("submit", (event) => {
     link: popupNewPlaceUrlInput.value,
   });
   popupFormNewPlace.reset();
-  validationNewPlaceForm.resetValidation();
+  newPlaceFormValidator.resetValidation();
   closePopup(popupNewPlace);
 });
 
-const validationProfileForm = new FormValidator(
+const profileFormValidator = new FormValidator(
   validationConfig,
   popupFormEditProfile
 );
-validationProfileForm.enableValidation();
+profileFormValidator.enableValidation();
 
-const validationNewPlaceForm = new FormValidator(
+const newPlaceFormValidator = new FormValidator(
   validationConfig,
   popupFormNewPlace
 );
-validationNewPlaceForm.enableValidation();
+newPlaceFormValidator.enableValidation();
